@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+header .logo p {
+    font-size: 1em;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.hero-section {
+    height: 100vh;
+    background-image: url('https://img.freepik.com/free-photo/clothing-rack-with-floral-hawaiian-shirts-hangers-hat_23-2149366017.jpg?ga=GA1.1.2129715342.1733130944&semt=ais_hybrid');
+    background-size: cover;
+    background-position: center;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.hero-section h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.hero-section button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.hero-section button:hover {
+    transform: scale(1.1);
+}
+
+.shop-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.shop-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.product-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 1.5em;
+    color: #ff4081;
+}
+
+.about-section {
+    background-color: #222;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    width: 60%;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+}
+
+footer p {
+    margin-top: 10px;
+}
