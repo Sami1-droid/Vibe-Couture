@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  RIDER
+  DRIVER
+  ADMIN
+}
+
+enum DriverStatus {
+  OFFLINE
+  ONLINE
+  BUSY
+}
+
+enum TripStatus {
+  REQUESTED
+  DRIVER_ASSIGNED
+  PICKING_UP
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  phone        String         @unique
+  name         String?
+  passwordHash String
+  role         Role
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  riderProfile  RiderProfile?
+  driverProfile DriverProfile?
+  tripsRider    Trip[]        @relation("RiderTrips")
+  tripsDriver   Trip[]        @relation("DriverTrips")
+}
+
+model RiderProfile {
+  id     String @id @default(cuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+model DriverProfile {
+  id        String       @id @default(cuid())
+  user      User         @relation(fields: [userId], references: [id])
+  userId    String       @unique
+  status    DriverStatus @default(OFFLINE)
+  ratingAvg Float        @default(5)
+  ratingCnt Int          @default(0)
+  vehicle   Vehicle?
+}
+
+model Vehicle {
+  id          String         @id @default(cuid())
+  driver      DriverProfile  @relation(fields: [driverId], references: [id])
+  driverId    String         @unique
+  make        String
+  model       String
+  plateNumber String         @unique
+  color       String?
+  capacity    Int            @default(4)
+}
+
+model Trip {
+  id                   String      @id @default(cuid())
+  rider                User        @relation("RiderTrips", fields: [riderId], references: [id])
+  riderId              String
+  driver               User?       @relation("DriverTrips", fields: [driverId], references: [id])
+  driverId             String?
+  status               TripStatus  @default(REQUESTED)
+  originLat            Float
+  originLng            Float
+  destLat              Float
+  destLng              Float
+  estimatedDistanceM   Int
+  estimatedDurationS   Int
+  fareEstimateCents    Int
+  finalFareCents       Int?
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+  payments             Payment[]
+}
+
+model Payment {
+  id                 String        @id @default(cuid())
+  trip               Trip          @relation(fields: [tripId], references: [id])
+  tripId             String
+  provider           String
+  providerPaymentId  String        @unique
+  status             PaymentStatus @default(PENDING)
+  createdAt          DateTime      @default(now())
+}

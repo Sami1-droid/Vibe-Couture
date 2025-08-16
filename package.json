@@ -1,0 +1,25 @@
+{
+  "name": "yango-like",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Production-grade ride-hailing monorepo (web + api + infra)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.18.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "bash -lc 'npm run dev -w apps/api & npm run dev -w apps/web & wait'",
+    "build": "npm run build -ws",
+    "start": "bash -lc 'npm run start -w apps/api & npm run start -w apps/web & wait'",
+    "lint": "npm run lint -ws",
+    "format": "npm run format -ws"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "prettier": "^3.3.3"
+  }
+}

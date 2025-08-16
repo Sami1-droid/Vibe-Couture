@@ -1,0 +1,41 @@
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Next.js
+.apps
+.next
+out
+.next-legacy
+
+# Build
+build
+dist
+coverage
+
+# Prisma
+prisma/generated
+
+# macOS
+.DS_Store
+
+# Docker
+**/.cache
+
+# Editor
+.vscode
+.idea
