@@ -1,0 +1,47 @@
+{
+  "name": "perfume-store",
+  "version": "1.0.0",
+  "description": "Full-stack perfume e-commerce platform",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm run install:server && npm run install:client",
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install --legacy-peer-deps",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm start",
+    "build": "npm run build:client",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "docker:dev": "docker-compose up -d",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "cd server && npm test",
+    "test:client": "cd client && npm test",
+    "lint": "npm run lint:server && npm run lint:client",
+    "lint:server": "cd server && eslint .",
+    "lint:client": "cd client && eslint .",
+    "clean": "rm -rf node_modules server/node_modules client/node_modules",
+    "reset": "npm run clean && npm run install:all"
+  },
+  "keywords": [
+    "perfume",
+    "ecommerce",
+    "react",
+    "nodejs",
+    "mongodb",
+    "typescript",
+    "full-stack"
+  ],
+  "author": "Perfume Store Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
