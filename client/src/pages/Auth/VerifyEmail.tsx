@@ -1,0 +1,1 @@
+import React from "react"; const VerifyEmail = () => <div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">VerifyEmail</h1><p>Coming soon...</p></div>; export default VerifyEmail;

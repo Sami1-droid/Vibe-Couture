@@ -1,0 +1,1 @@
+import React from "react"; const About = () => <div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">About Us</h1><p>Learn about our story...</p></div>; export default About;
